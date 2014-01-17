@@ -1,0 +1,181 @@
+/* line 9, jquery.week-planner.scss */
+[data-week-planner] {
+  position: relative; }
+  /* line 12, jquery.week-planner.scss */
+  [data-week-planner] * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
+
+/* line 17, jquery.week-planner.scss */
+.week-planner-grid-wrapper {
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; }
+  /* line 24, jquery.week-planner.scss */
+  .week-planner-grid-wrapper > :first-child {
+    height: 30px;
+    display: -webkit-flexbox;
+    display: -moz-flexbox;
+    display: -ms-flexbox;
+    display: flexbox;
+    display: -webkit-flex;
+    display: flex;
+    width: 100%; }
+    /* line 29, jquery.week-planner.scss */
+    .week-planner-grid-wrapper > :first-child > div {
+      -webkit-flex: 1;
+      -moz-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      text-align: center;
+      line-height: 30px; }
+      /* line 34, jquery.week-planner.scss */
+      .week-planner-grid-wrapper > :first-child > div:first-child {
+        -webkit-flex: 0 1 50px;
+        -moz-flex: 0 1 50px;
+        -ms-flex: 0 1 50px;
+        flex: 0 1 50px;
+        width: 60px; }
+  /* line 41, jquery.week-planner.scss */
+  .week-planner-grid-wrapper .week-planner-grid-line {
+    border-top: 1px solid #eeeeee; }
+    /* line 44, jquery.week-planner.scss */
+    .week-planner-grid-wrapper .week-planner-grid-line.hour {
+      border-top-color: black; }
+      /* line 47, jquery.week-planner.scss */
+      .week-planner-grid-wrapper .week-planner-grid-line.hour > span {
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        margin-left: 1px;
+        width: 37px;
+        font-size: 10px;
+        padding: 0 5px;
+        text-align: right;
+        top: -11px;
+        background-color: rgba(255, 255, 255, 0.9); }
+
+/* line 63, jquery.week-planner.scss */
+.week-planner-columns-wrapper {
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  display: -webkit-flexbox;
+  display: -moz-flexbox;
+  display: -ms-flexbox;
+  display: flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  position: relative;
+  z-index: 1; }
+  /* line 72, jquery.week-planner.scss */
+  .week-planner-columns-wrapper > * {
+    -webkit-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    border-left: 1px solid #dddddd;
+    position: relative; }
+    /* line 77, jquery.week-planner.scss */
+    .week-planner-columns-wrapper > *:first-child {
+      border: none;
+      -webkit-flex: 0 1 50px;
+      -moz-flex: 0 1 50px;
+      -ms-flex: 0 1 50px;
+      flex: 0 1 50px;
+      width: 60px; }
+  /* line 84, jquery.week-planner.scss */
+  .week-planner-columns-wrapper .slot {
+    -webkit-transition: opacity 0.2s ease-out, width 0.2s ease-out, margin-left 0.2s ease-out;
+    -webkit-transition-delay: 0s, 0s, 0s;
+    -moz-transition: opacity 0.2s ease-out 0s, width 0.2s ease-out 0s, margin-left 0.2s ease-out 0s;
+    -o-transition: opacity 0.2s ease-out 0s, width 0.2s ease-out 0s, margin-left 0.2s ease-out 0s;
+    transition: opacity 0.2s ease-out 0s, width 0.2s ease-out 0s, margin-left 0.2s ease-out 0s;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    padding: 3px; }
+    /* line 92, jquery.week-planner.scss */
+    .week-planner-columns-wrapper .slot.drawing {
+      filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+      opacity: 0.5; }
+    /* line 97, jquery.week-planner.scss */
+    .week-planner-columns-wrapper .slot.drawing, .week-planner-columns-wrapper .slot.dragging {
+      pointer-events: none; }
+    /* line 101, jquery.week-planner.scss */
+    .week-planner-columns-wrapper .slot .filler {
+      -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      background: -webkit-linear-gradient(top, #5ac3ef, #1076a0);
+      background: -moz-linear-gradient(top, #5ac3ef, #1076a0);
+      background: -o-linear-gradient(top, #5ac3ef, #1076a0);
+      background: linear-gradient(to bottom, #5ac3ef, #1076a0);
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      pointer-events: none;
+      height: 100%; }
+    /* line 109, jquery.week-planner.scss */
+    .week-planner-columns-wrapper .slot .slot-info {
+      position: absolute;
+      font-size: 12px;
+      left: 8px;
+      top: 5px; }
+    /* line 116, jquery.week-planner.scss */
+    .week-planner-columns-wrapper .slot .controls {
+      position: absolute;
+      top: 0;
+      right: 0; }
+      /* line 120, jquery.week-planner.scss */
+      .week-planner-columns-wrapper .slot .controls .icon-remove-sign {
+        font-size: 1.35em;
+        position: absolute;
+        right: 6px;
+        top: 7px;
+        color: white;
+        cursor: pointer;
+        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+        opacity: 0.4;
+        -webkit-transition: opacity 0.2s ease-out;
+        -webkit-transition-delay: 0s;
+        -moz-transition: opacity 0.2s ease-out 0s;
+        -o-transition: opacity 0.2s ease-out 0s;
+        transition: opacity 0.2s ease-out 0s; }
+        /* line 130, jquery.week-planner.scss */
+        .week-planner-columns-wrapper .slot .controls .icon-remove-sign:hover {
+          filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+          opacity: 1; }
+    /* line 137, jquery.week-planner.scss */
+    .week-planner-columns-wrapper .slot:hover .controls {
+      filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+      opacity: 1; }
+    /* line 142, jquery.week-planner.scss */
+    .week-planner-columns-wrapper .slot.overlapping {
+      filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+      opacity: 0.8; }
+      /* line 144, jquery.week-planner.scss */
+      .week-planner-columns-wrapper .slot.overlapping .filler {
+        background: -webkit-linear-gradient(top, #eb0000, #b80000);
+        background: -moz-linear-gradient(top, #eb0000, #b80000);
+        background: -o-linear-gradient(top, #eb0000, #b80000);
+        background: linear-gradient(to bottom, #eb0000, #b80000); }
+    /* line 149, jquery.week-planner.scss */
+    .week-planner-columns-wrapper .slot.overlapper {
+      width: 53%;
+      right: auto;
+      left: 0; }
+    /* line 155, jquery.week-planner.scss */
+    .week-planner-columns-wrapper .slot.overlapped {
+      width: 53%;
+      margin-left: 47%; }

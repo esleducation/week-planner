@@ -1,0 +1,160 @@
+@import "compass/css3";
+@import "compass/css3/user-interface";
+
+$color-border : #DDD;
+$color-slot-sep : #EEE;
+$color-slot : #5AC3EF;
+$color-slot-overlapping : #EB0000;
+
+[data-week-planner] {
+	position: relative;
+
+	& * {
+		@include box-sizing(border-box);
+	}
+}
+
+.week-planner-grid-wrapper {
+	@include user-select(none);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+
+	> :first-child {
+		height: 30px;
+		@include display-flex;
+		width: 100%;
+
+		> div {
+			@include flex(1);
+			text-align: center;
+			line-height: 30px;
+
+			&:first-child {
+				@include flex(0 1 50px);
+				width: 60px;
+			}
+		}
+	}
+
+	.week-planner-grid-line {
+		border-top: 1px solid $color-slot-sep;
+
+		&.hour {
+			border-top-color: black;
+
+			> span {
+				position: relative;
+				z-index: 1;
+				display: inline-block;
+				margin-left: 1px;
+				width: 37px;
+				font-size: 10px;
+				padding: 0 5px;
+				text-align: right;
+				top: -11px;
+				background-color: rgba(255, 255, 255, 0.9);
+			}
+		}
+	}
+}
+
+.week-planner-columns-wrapper {
+	@include user-select(none);
+	border : 1px solid $color-border;
+	border-radius: 3px;
+	@include display-flex;
+	width: 100%;
+	position: relative;
+	z-index: 1;
+
+	> * {
+		@include flex(1);
+		border-left: 1px solid $color-border;
+		position: relative;
+
+		&:first-child {
+			border : none;
+			@include flex(0 1 50px);
+			width: 60px;
+		}
+	}
+
+	.slot {
+		//@include opacity(0.95);
+		@include transition(opacity 0.2s ease-out 0s, width 0.2s ease-out 0s, margin-left 0.2s ease-out 0s);
+		position: absolute;
+		right: 0;
+		width: 100%;
+		padding: 3px;
+
+		&.drawing {
+			@include opacity(0.5);
+		}
+
+		&.drawing,
+		&.dragging {
+			pointer-events : none;
+		}
+
+		.filler {
+			@include box-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+			@include background(linear-gradient(top, $color-slot, adjust-lightness($color-slot, -30)));
+			@include border-radius(5px);
+			pointer-events: none;
+			height: 100%;
+		}
+
+		.slot-info {
+			position: absolute;
+			font-size: 12px;
+			left: 8px;
+			top : 5px;
+		}
+
+		.controls {
+			position: absolute;
+			top: 0;
+			right: 0;
+			.icon-remove-sign {
+				font-size: 1.35em;
+				position: absolute;
+				right: 6px;
+				top: 7px;
+				color: white;
+				cursor: pointer;
+				@include opacity(0.4);
+				@include transition(opacity 0.2s ease-out 0s);
+
+				&:hover {
+					@include opacity(1);
+				}
+			}
+		}
+
+		&:hover {
+			.controls {
+				@include opacity(1);
+			}
+		}
+
+		&.overlapping {
+			@include opacity(0.8);
+			.filler {
+				@include background(linear-gradient(top, $color-slot-overlapping, adjust-lightness($color-slot-overlapping, -10)));
+			}
+		}
+
+		&.overlapper {
+			width: 53%;
+			right: auto;
+			left: 0;
+		}
+
+		&.overlapped {
+			width: 53%;
+			margin-left: 47%;
+		}
+	}
+}
